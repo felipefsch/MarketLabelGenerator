@@ -83,7 +83,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="labelInputFile" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="fieldInputFilePath" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -95,7 +95,7 @@
                           <Component id="fieldOutputFilePath" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="buttonSelectOutputFile" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="54" max="32767" attributes="0"/>
+                      <EmptySpace pref="36" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -118,6 +118,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Select File"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSelectInputFileActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="labelOutputFile">
               <Properties>
@@ -136,6 +139,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Select File"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSelectOutputFileActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -152,10 +158,10 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Component id="labelInputModel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="labelModelFile" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="fieldInputModelPath" pref="221" max="32767" attributes="0"/>
+                      <Component id="fieldModelFilePath" pref="231" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="buttonSelectModelFile" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -165,35 +171,38 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="labelInputModel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="fieldInputModelPath" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelModelFile" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="fieldModelFilePath" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="buttonSelectModelFile" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="61" max="32767" attributes="0"/>
+                      <EmptySpace pref="52" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="labelInputModel">
+            <Component class="javax.swing.JLabel" name="labelModelFile">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Input File"/>
+                <Property name="text" type="java.lang.String" value="Model File"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="fieldInputModelPath">
+            <Component class="javax.swing.JTextField" name="fieldModelFilePath">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldInputModelPathActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldModelFilePathActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="buttonSelectModelFile">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Select File"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSelectModelFileActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -211,24 +220,19 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="labelNameColumn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelPriceColumn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelProductRow" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelIdColumn" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="labelIdColumn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="fieldIdColumn" pref="300" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="labelNameColumn" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="labelPriceColumn" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="labelProductRow" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="fieldProductRow" max="32767" attributes="0"/>
-                                  <Component id="fieldPriceColumn" max="32767" attributes="0"/>
-                                  <Component id="fieldNameColumn" max="32767" attributes="0"/>
-                              </Group>
+                          <Component id="fieldIdColumn" pref="300" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="fieldProductRow" pref="300" max="32767" attributes="0"/>
+                              <Component id="fieldPriceColumn" max="32767" attributes="0"/>
+                              <Component id="fieldNameColumn" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>

@@ -5,6 +5,8 @@
  */
 package ui;
 
+import utils.FileHandler;
+
 /**
  *
  * @author felipe-schmidt
@@ -36,8 +38,8 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
         fieldOutputFilePath = new javax.swing.JTextField();
         buttonSelectOutputFile = new javax.swing.JButton();
         panelLoadModel = new javax.swing.JPanel();
-        labelInputModel = new javax.swing.JLabel();
-        fieldInputModelPath = new javax.swing.JTextField();
+        labelModelFile = new javax.swing.JLabel();
+        fieldModelFilePath = new javax.swing.JTextField();
         buttonSelectModelFile = new javax.swing.JButton();
         panelSetup = new javax.swing.JPanel();
         labelIdColumn = new javax.swing.JLabel();
@@ -62,6 +64,11 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
         });
 
         buttonSelectInputFile.setText("Select File");
+        buttonSelectInputFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSelectInputFileActionPerformed(evt);
+            }
+        });
 
         labelOutputFile.setText("Output File");
 
@@ -73,6 +80,11 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
         });
 
         buttonSelectOutputFile.setText("Select File");
+        buttonSelectOutputFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSelectOutputFileActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelCreateLabelsLayout = new javax.swing.GroupLayout(panelCreateLabels);
         panelCreateLabels.setLayout(panelCreateLabelsLayout);
@@ -98,7 +110,7 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
         panelCreateLabelsLayout.setVerticalGroup(
             panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCreateLabelsLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(29, 29, 29)
                 .addGroup(panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelInputFile)
                     .addComponent(fieldInputFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -108,31 +120,36 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
                     .addComponent(labelOutputFile)
                     .addComponent(fieldOutputFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonSelectOutputFile))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Create Labels", panelCreateLabels);
 
-        labelInputModel.setText("Input File");
+        labelModelFile.setText("Model File");
 
-        fieldInputModelPath.setEnabled(false);
-        fieldInputModelPath.addActionListener(new java.awt.event.ActionListener() {
+        fieldModelFilePath.setEnabled(false);
+        fieldModelFilePath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldInputModelPathActionPerformed(evt);
+                fieldModelFilePathActionPerformed(evt);
             }
         });
 
         buttonSelectModelFile.setText("Select File");
+        buttonSelectModelFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSelectModelFileActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelLoadModelLayout = new javax.swing.GroupLayout(panelLoadModel);
         panelLoadModel.setLayout(panelLoadModelLayout);
         panelLoadModelLayout.setHorizontalGroup(
             panelLoadModelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLoadModelLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(labelInputModel)
+                .addContainerGap()
+                .addComponent(labelModelFile)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(fieldInputModelPath, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                .addComponent(fieldModelFilePath, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonSelectModelFile)
                 .addContainerGap())
@@ -140,12 +157,12 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
         panelLoadModelLayout.setVerticalGroup(
             panelLoadModelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLoadModelLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(42, 42, 42)
                 .addGroup(panelLoadModelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelInputModel)
-                    .addComponent(fieldInputModelPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelModelFile)
+                    .addComponent(fieldModelFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonSelectModelFile))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Load Model", panelLoadModel);
@@ -176,21 +193,18 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
             panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelSetupLayout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelNameColumn)
+                    .addComponent(labelPriceColumn)
+                    .addComponent(labelProductRow)
+                    .addComponent(labelIdColumn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelSetupLayout.createSequentialGroup()
-                        .addComponent(labelIdColumn)
-                        .addGap(26, 26, 26)
-                        .addComponent(fieldIdColumn, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
-                    .addGroup(panelSetupLayout.createSequentialGroup()
-                        .addGroup(panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelNameColumn)
-                            .addComponent(labelPriceColumn)
-                            .addComponent(labelProductRow))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldProductRow)
-                            .addComponent(fieldPriceColumn)
-                            .addComponent(fieldNameColumn))))
+                    .addComponent(fieldIdColumn, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addGroup(panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(fieldProductRow, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                        .addComponent(fieldPriceColumn)
+                        .addComponent(fieldNameColumn)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelSetupLayout.setVerticalGroup(
@@ -248,9 +262,9 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldOutputFilePathActionPerformed
 
-    private void fieldInputModelPathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldInputModelPathActionPerformed
+    private void fieldModelFilePathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldModelFilePathActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fieldInputModelPathActionPerformed
+    }//GEN-LAST:event_fieldModelFilePathActionPerformed
 
     private void fieldPriceColumnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldPriceColumnActionPerformed
         // TODO add your handling code here:
@@ -259,6 +273,18 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
     private void fieldProductRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldProductRowActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldProductRowActionPerformed
+
+    private void buttonSelectInputFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSelectInputFileActionPerformed
+        fieldInputFilePath.setText(FileHandler.displayFileSelector());
+    }//GEN-LAST:event_buttonSelectInputFileActionPerformed
+
+    private void buttonSelectOutputFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSelectOutputFileActionPerformed
+        fieldOutputFilePath.setText(FileHandler.displayFileSelector());
+    }//GEN-LAST:event_buttonSelectOutputFileActionPerformed
+
+    private void buttonSelectModelFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSelectModelFileActionPerformed
+        fieldModelFilePath.setText(FileHandler.displayFileSelector());
+    }//GEN-LAST:event_buttonSelectModelFileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,7 +327,7 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
     private javax.swing.JButton buttonSelectOutputFile;
     private javax.swing.JTextField fieldIdColumn;
     private javax.swing.JTextField fieldInputFilePath;
-    private javax.swing.JTextField fieldInputModelPath;
+    private javax.swing.JTextField fieldModelFilePath;
     private javax.swing.JTextField fieldNameColumn;
     private javax.swing.JTextField fieldOutputFilePath;
     private javax.swing.JTextField fieldPriceColumn;
@@ -309,8 +335,8 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane;
     private javax.swing.JLabel labelIdColumn;
     private javax.swing.JLabel labelInputFile;
-    private javax.swing.JLabel labelInputModel;
     private javax.swing.JLabel labelMarketLabelGenerator;
+    private javax.swing.JLabel labelModelFile;
     private javax.swing.JLabel labelNameColumn;
     private javax.swing.JLabel labelOutputFile;
     private javax.swing.JLabel labelPriceColumn;

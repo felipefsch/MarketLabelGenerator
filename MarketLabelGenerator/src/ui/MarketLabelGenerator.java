@@ -40,14 +40,14 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
         fieldInputModelPath = new javax.swing.JTextField();
         buttonSelectModelFile = new javax.swing.JButton();
         panelSetup = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        labelIdColumn = new javax.swing.JLabel();
+        labelNameColumn = new javax.swing.JLabel();
+        labelPriceColumn = new javax.swing.JLabel();
+        labelProductRow = new javax.swing.JLabel();
+        fieldIdColumn = new javax.swing.JTextField();
+        fieldNameColumn = new javax.swing.JTextField();
+        fieldPriceColumn = new javax.swing.JTextField();
+        fieldProductRow = new javax.swing.JTextField();
         labelMarketLabelGenerator = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -150,23 +150,23 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
 
         jTabbedPane.addTab("Load Model", panelLoadModel);
 
-        jLabel1.setText("ID Column");
+        labelIdColumn.setText("ID Column");
 
-        jLabel2.setText("Name Column");
+        labelNameColumn.setText("Name Column");
 
-        jLabel3.setText("Price Column");
+        labelPriceColumn.setText("Price Column");
 
-        jLabel4.setText("Product Row");
+        labelProductRow.setText("Product Row");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        fieldPriceColumn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                fieldPriceColumnActionPerformed(evt);
             }
         });
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        fieldProductRow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                fieldProductRowActionPerformed(evt);
             }
         });
 
@@ -178,19 +178,19 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelSetupLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(labelIdColumn)
                         .addGap(26, 26, 26)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                        .addComponent(fieldIdColumn, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
                     .addGroup(panelSetupLayout.createSequentialGroup()
                         .addGroup(panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
+                            .addComponent(labelNameColumn)
+                            .addComponent(labelPriceColumn)
+                            .addComponent(labelProductRow))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField2))))
+                            .addComponent(fieldProductRow)
+                            .addComponent(fieldPriceColumn)
+                            .addComponent(fieldNameColumn))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelSetupLayout.setVerticalGroup(
@@ -198,20 +198,20 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
             .addGroup(panelSetupLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addGroup(panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelIdColumn)
+                    .addComponent(fieldIdColumn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelNameColumn)
+                    .addComponent(fieldNameColumn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelPriceColumn)
+                    .addComponent(fieldPriceColumn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelProductRow)
+                    .addComponent(fieldProductRow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
@@ -252,13 +252,13 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldInputModelPathActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void fieldPriceColumnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldPriceColumnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_fieldPriceColumnActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void fieldProductRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldProductRowActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_fieldProductRowActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,22 +299,22 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
     private javax.swing.JButton buttonSelectInputFile;
     private javax.swing.JButton buttonSelectModelFile;
     private javax.swing.JButton buttonSelectOutputFile;
+    private javax.swing.JTextField fieldIdColumn;
     private javax.swing.JTextField fieldInputFilePath;
     private javax.swing.JTextField fieldInputModelPath;
+    private javax.swing.JTextField fieldNameColumn;
     private javax.swing.JTextField fieldOutputFilePath;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField fieldPriceColumn;
+    private javax.swing.JTextField fieldProductRow;
     private javax.swing.JTabbedPane jTabbedPane;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel labelIdColumn;
     private javax.swing.JLabel labelInputFile;
     private javax.swing.JLabel labelInputModel;
     private javax.swing.JLabel labelMarketLabelGenerator;
+    private javax.swing.JLabel labelNameColumn;
     private javax.swing.JLabel labelOutputFile;
+    private javax.swing.JLabel labelPriceColumn;
+    private javax.swing.JLabel labelProductRow;
     private javax.swing.JPanel panelCreateLabels;
     private javax.swing.JPanel panelLoadModel;
     private javax.swing.JPanel panelSetup;

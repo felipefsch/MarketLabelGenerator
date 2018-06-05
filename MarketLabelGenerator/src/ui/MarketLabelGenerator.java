@@ -5,6 +5,7 @@
  */
 package ui;
 
+import java.util.prefs.Preferences;
 import utils.FileHandler;
 
 /**
@@ -18,6 +19,7 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
      */
     public MarketLabelGenerator() {
         initComponents();
+        loadUserPreferences();
     }
 
     /**
@@ -29,6 +31,7 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonLabelCreation = new javax.swing.ButtonGroup();
         jTabbedPane = new javax.swing.JTabbedPane();
         panelCreateLabels = new javax.swing.JPanel();
         labelInputFile = new javax.swing.JLabel();
@@ -37,6 +40,9 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
         labelOutputFile = new javax.swing.JLabel();
         fieldOutputFilePath = new javax.swing.JTextField();
         buttonSelectOutputFile = new javax.swing.JButton();
+        radioEverything = new javax.swing.JRadioButton();
+        radioUpdates = new javax.swing.JRadioButton();
+        labelGenerate = new javax.swing.JLabel();
         panelLoadModel = new javax.swing.JPanel();
         labelModelFile = new javax.swing.JLabel();
         fieldModelFilePath = new javax.swing.JTextField();
@@ -51,6 +57,11 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
         fieldPriceColumn = new javax.swing.JTextField();
         fieldProductRow = new javax.swing.JTextField();
         labelMarketLabelGenerator = new javax.swing.JLabel();
+        comboBoxLanguageSelector = new javax.swing.JComboBox<>();
+        labelLanguage = new javax.swing.JLabel();
+
+        buttonLabelCreation.add(radioEverything);
+        buttonLabelCreation.add(radioUpdates);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,6 +97,18 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
             }
         });
 
+        radioEverything.setText("Everything");
+
+        radioUpdates.setSelected(true);
+        radioUpdates.setText("Updates");
+        radioUpdates.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioUpdatesActionPerformed(evt);
+            }
+        });
+
+        labelGenerate.setText("Generate");
+
         javax.swing.GroupLayout panelCreateLabelsLayout = new javax.swing.GroupLayout(panelCreateLabels);
         panelCreateLabels.setLayout(panelCreateLabelsLayout);
         panelCreateLabelsLayout.setHorizontalGroup(
@@ -96,14 +119,21 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
                     .addGroup(panelCreateLabelsLayout.createSequentialGroup()
                         .addComponent(labelInputFile)
                         .addGap(18, 18, 18)
-                        .addComponent(fieldInputFilePath, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                        .addComponent(fieldInputFilePath)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(buttonSelectInputFile))
-                    .addGroup(panelCreateLabelsLayout.createSequentialGroup()
-                        .addComponent(labelOutputFile)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCreateLabelsLayout.createSequentialGroup()
+                        .addGroup(panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelOutputFile)
+                            .addComponent(labelGenerate))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fieldOutputFilePath)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelCreateLabelsLayout.createSequentialGroup()
+                                .addComponent(radioUpdates)
+                                .addGap(18, 18, 18)
+                                .addComponent(radioEverything))
+                            .addComponent(fieldOutputFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buttonSelectOutputFile)))
                 .addContainerGap())
         );
@@ -120,7 +150,12 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
                     .addComponent(labelOutputFile)
                     .addComponent(fieldOutputFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonSelectOutputFile))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioEverything)
+                    .addComponent(radioUpdates)
+                    .addComponent(labelGenerate))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Create Labels", panelCreateLabels);
@@ -149,7 +184,7 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(labelModelFile)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(fieldModelFilePath, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                .addComponent(fieldModelFilePath, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonSelectModelFile)
                 .addContainerGap())
@@ -162,7 +197,7 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
                     .addComponent(labelModelFile)
                     .addComponent(fieldModelFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonSelectModelFile))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Load Model", panelLoadModel);
@@ -226,12 +261,21 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
                 .addGroup(panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelProductRow)
                     .addComponent(fieldProductRow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(0, 7, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Setup", panelSetup);
 
         labelMarketLabelGenerator.setText("Market Label Generator");
+
+        comboBoxLanguageSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EN", "DE", "PT" }));
+        comboBoxLanguageSelector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxLanguageSelectorActionPerformed(evt);
+            }
+        });
+
+        labelLanguage.setText("Language");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -240,13 +284,20 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
             .addComponent(jTabbedPane)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(labelMarketLabelGenerator)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelLanguage)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(comboBoxLanguageSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelMarketLabelGenerator)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelMarketLabelGenerator)
+                    .addComponent(comboBoxLanguageSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelLanguage))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane))
         );
@@ -286,6 +337,18 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
         fieldModelFilePath.setText(FileHandler.displayFileSelector());
     }//GEN-LAST:event_buttonSelectModelFileActionPerformed
 
+    private void radioUpdatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioUpdatesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioUpdatesActionPerformed
+
+    private void comboBoxLanguageSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxLanguageSelectorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxLanguageSelectorActionPerformed
+
+    private void loadUserPreferences() {
+        //Preferences prefs = Preferences.userNodeForPackage(this);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -313,6 +376,8 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -322,9 +387,11 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonLabelCreation;
     private javax.swing.JButton buttonSelectInputFile;
     private javax.swing.JButton buttonSelectModelFile;
     private javax.swing.JButton buttonSelectOutputFile;
+    private javax.swing.JComboBox<String> comboBoxLanguageSelector;
     private javax.swing.JTextField fieldIdColumn;
     private javax.swing.JTextField fieldInputFilePath;
     private javax.swing.JTextField fieldModelFilePath;
@@ -333,8 +400,10 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
     private javax.swing.JTextField fieldPriceColumn;
     private javax.swing.JTextField fieldProductRow;
     private javax.swing.JTabbedPane jTabbedPane;
+    private javax.swing.JLabel labelGenerate;
     private javax.swing.JLabel labelIdColumn;
     private javax.swing.JLabel labelInputFile;
+    private javax.swing.JLabel labelLanguage;
     private javax.swing.JLabel labelMarketLabelGenerator;
     private javax.swing.JLabel labelModelFile;
     private javax.swing.JLabel labelNameColumn;
@@ -344,5 +413,7 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
     private javax.swing.JPanel panelCreateLabels;
     private javax.swing.JPanel panelLoadModel;
     private javax.swing.JPanel panelSetup;
+    private javax.swing.JRadioButton radioEverything;
+    private javax.swing.JRadioButton radioUpdates;
     // End of variables declaration//GEN-END:variables
 }

@@ -210,12 +210,18 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
 
         labelProductRow.setText("Product Row");
 
+        fieldIdColumn.setText("ID");
+
+        fieldNameColumn.setText("Name");
+
+        fieldPriceColumn.setText("Price");
         fieldPriceColumn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldPriceColumnActionPerformed(evt);
             }
         });
 
+        fieldProductRow.setText("^[0-9]{1,6}$");
         fieldProductRow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldProductRowActionPerformed(evt);
@@ -240,7 +246,7 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
                         .addComponent(fieldProductRow, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                         .addComponent(fieldPriceColumn)
                         .addComponent(fieldNameColumn)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         panelSetupLayout.setVerticalGroup(
             panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -19,6 +19,14 @@ public class Product {
         this.name  = name;
         this.price = price;
     }
+    
+    public Product(String id, String name, String price) {
+        this.id    = id;
+        this.name  = name;
+        BigDecimal tmpPrice = new BigDecimal(price);
+        tmpPrice.setScale(2);
+        this.price = tmpPrice;
+    }    
 
     public void setId(String id) {
         this.id = id;

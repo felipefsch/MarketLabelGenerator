@@ -23,7 +23,11 @@ public class Product {
     public Product(String id, String name, String price) {
         this.id    = id;
         this.name  = name;
-        BigDecimal tmpPrice = new BigDecimal(price);
+        
+        price = price.replace(',', '.');        
+        // TODO ensure correctness of input string        
+        //price = price.substring(0, price.lastIndexOf('.')).replace(".", "");
+        BigDecimal tmpPrice = new BigDecimal(price);        
         tmpPrice.setScale(2);
         this.price = tmpPrice;
     }    
@@ -61,5 +65,9 @@ public class Product {
         }
         
         return false;
+    }
+    
+    public String toString() {
+        return "ID: \"" + id + "\" NAME: \"" + name + "\" PRICE: \"" + price + "\"";
     }
 }

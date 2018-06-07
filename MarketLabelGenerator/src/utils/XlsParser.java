@@ -13,13 +13,18 @@ import org.apache.poi.ss.usermodel.*;
  */
 public class XlsParser {
 
-    private String id;
-    private String name;
-    private String price;
+    private final String id;
+    private final String name;
+    private final String price;
+    
     private int idIdx = 0;
     private int nameIdx = 0;
     private int priceIdx = 0;
+    
     Workbook productsFile;
+    
+    // Default 6 digits product ID
+    private String validRowProductIdRegex = "^[0-9]{1,6}$";
     
     /**
      * Initialize parser configuring it to correctly select the necessary
@@ -45,6 +50,10 @@ public class XlsParser {
         File f = new File(xlsFilePath);
         productsFile = WorkbookFactory.create(f);
     }    
+    
+    public void setValidRowProductIdRegex(String regex) {
+        this.validRowProductIdRegex = regex;
+    }
     
     private boolean hasRowIndexes() {
         return (idIdx != nameIdx)
@@ -76,11 +85,19 @@ public class XlsParser {
     }
     
     private Product rowToProduct(Row row) {
-        return new Product(
-                row.getCell(idIdx).toString(),
-                row.getCell(nameIdx).toString(),
-                row.getCell(priceIdx).toString()
-        );
+        String productId    = row.getCell(idIdx).toString();
+        String productName  = row.getCell(nameIdx).toString();
+        String productPrice = row.getCell(priceIdx).toString();
+        
+        if (productId.matches(validRowProductIdRegex)
+            && !productId.isEmpty()
+            && !productName.isEmpty()
+            && !productPrice.isEmpty())
+        {
+            return new Product(productId, productName, productPrice);
+        }
+        
+        return null;
     }
     
     private List<Product> parseSheet(Sheet sheet) throws Exception {
@@ -91,7 +108,10 @@ public class XlsParser {
                 findRowIndexes(row);
             }
             else {
-                productsList.add(rowToProduct(row));
+                Product p = rowToProduct(row);
+                if (p != null) {
+                    productsList.add(p);
+                }
             }
         }
         

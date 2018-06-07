@@ -49,9 +49,9 @@ public class XlsParserTest {
     
     private static List<Product> getExpectedResultDefault() {
         List<Product> productList = new LinkedList<>();
-        productList.add(new Product("001", "Product 1", BigDecimal.valueOf(1.15)));
-        productList.add(new Product("002", "Product 2", BigDecimal.valueOf(2.30)));
-        productList.add(new Product("003", "Product 3", BigDecimal.valueOf(15.20)));        
+        productList.add(new Product("001", "Product 1", new BigDecimal("1.15")));
+        productList.add(new Product("002", "Product 2", new BigDecimal("2.30")));
+        productList.add(new Product("003", "Product 3", new BigDecimal("15.20")));        
         return productList;
     }
     
@@ -59,7 +59,8 @@ public class XlsParserTest {
     public void testParseDefault() throws Exception {
         String testFilePath = "test\\docs\\testDefault.xls";
         XlsParser instance = new XlsParser("ID", "NAME", "PRICE", testFilePath);
-        List<Product> result = instance.parse();
+        instance.setValidRowProductIdRegex("^[0-9]{1,3}$");
+        List<Product> result = instance.parse();  
         assertArrayEquals(expResult.toArray(), result.toArray());
     }
     
@@ -67,6 +68,7 @@ public class XlsParserTest {
     public void testParseComplex() throws Exception {
         String testFilePath = "test\\docs\\testComplex.xls";
         XlsParser instance = new XlsParser("ID", "NAME", "PRICE", testFilePath);
+        instance.setValidRowProductIdRegex("^[0-9]{1,3}$");
         List<Product> result = instance.parse();
         assertArrayEquals(expResult.toArray(), result.toArray());
     }    

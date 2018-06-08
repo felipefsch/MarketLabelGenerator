@@ -49,9 +49,9 @@ public class XlsParserTest {
     
     private static List<Product> getExpectedResultDefault() {
         List<Product> productList = new LinkedList<>();
-        productList.add(new Product("001", "Product 1", new BigDecimal("1.15")));
-        productList.add(new Product("002", "Product 2", new BigDecimal("2.30")));
-        productList.add(new Product("003", "Product 3", new BigDecimal("15.20")));        
+        productList.add(new Product("001", "Product 1", "1.15"));
+        productList.add(new Product("002", "Product 2", "2.30"));
+        productList.add(new Product("003", "Product 3", "15.20"));        
         return productList;
     }
     
@@ -60,7 +60,7 @@ public class XlsParserTest {
         String testFilePath = "test\\docs\\testDefault.xls";
         XlsParser instance = new XlsParser("ID", "NAME", "PRICE", testFilePath);
         instance.setValidRowProductIdRegex("^[0-9]{1,3}$");
-        List<Product> result = instance.parse();  
+        List<Product> result = instance.parse(); 
         assertArrayEquals(expResult.toArray(), result.toArray());
     }
     

@@ -1,6 +1,7 @@
 package utils;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 
 /**
  *
@@ -10,38 +11,28 @@ public class Product {
    
     private String id;
     private String name;
-    private BigDecimal price;
+    private String price;
    
     public Product() {}
     
-    public Product(String id, String name, BigDecimal price) {
-        this.id    = id;
-        this.name  = name;
-        this.price = price;
-    }
-    
     public Product(String id, String name, String price) {
-        this.id    = id;
-        this.name  = name;
-        
-        price = price.replace(',', '.');        
-        // TODO ensure correctness of input string        
-        //price = price.substring(0, price.lastIndexOf('.')).replace(".", "");
-        BigDecimal tmpPrice = new BigDecimal(price);        
-        tmpPrice.setScale(2);
-        this.price = tmpPrice;
+        setId(id);
+        setName(name);
+        setPrice(price);
     }    
 
-    public void setId(String id) {
+    public final void setId(String id) {
         this.id = id;
     }
 
-    public void setName(String name) {
+    public final void setName(String name) {
         this.name = name;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public final void setPrice(String price) {
+        BigDecimal tmpPrice = new BigDecimal(price);        
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        this.price = nf.format(tmpPrice);
     }
     
     public String getId() {
@@ -52,18 +43,19 @@ public class Product {
         return name;
     }
 
-    public BigDecimal getPrice() {
+    public String getPrice() {
         return price;
     }
     
-    public boolean equals(Product p) {
+    @Override
+    public boolean equals(Object o) {
+        Product p = (Product) o;
         if (p.getId().equals(this.id)
             && p.getName().equals(this.name)
             && p.getPrice().equals(this.price))
         {
             return true;
-        }
-        
+        }        
         return false;
     }
     

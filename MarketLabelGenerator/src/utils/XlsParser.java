@@ -71,7 +71,6 @@ public class XlsParser {
     private void findRowIndexes(Row row) {        
         for(Cell cell : row) {
             String cellStr = cell.getStringCellValue().toUpperCase();
-            System.out.println(cellStr);
             if (cellStr.equals(this.id)) {
                 idIdx = cell.getColumnIndex();
             }

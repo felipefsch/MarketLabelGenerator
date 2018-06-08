@@ -56,8 +56,6 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
         fieldNameColumn = new javax.swing.JTextField();
         fieldPriceColumn = new javax.swing.JTextField();
         fieldProductRow = new javax.swing.JTextField();
-        labelCurrency = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         labelMarketLabelGenerator = new javax.swing.JLabel();
         comboBoxLanguageSelector = new javax.swing.JComboBox<>();
         labelLanguage = new javax.swing.JLabel();
@@ -230,10 +228,6 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
             }
         });
 
-        labelCurrency.setText("Currency");
-
-        jTextField1.setText("$");
-
         javax.swing.GroupLayout panelSetupLayout = new javax.swing.GroupLayout(panelSetup);
         panelSetup.setLayout(panelSetupLayout);
         panelSetupLayout.setHorizontalGroup(
@@ -244,15 +238,13 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
                     .addComponent(labelNameColumn)
                     .addComponent(labelPriceColumn)
                     .addComponent(labelProductRow)
-                    .addComponent(labelIdColumn)
-                    .addComponent(labelCurrency))
+                    .addComponent(labelIdColumn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(fieldIdColumn)
                     .addComponent(fieldProductRow, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                     .addComponent(fieldPriceColumn)
-                    .addComponent(fieldNameColumn)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(fieldNameColumn))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         panelSetupLayout.setVerticalGroup(
@@ -274,11 +266,7 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
                 .addGroup(panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelProductRow)
                     .addComponent(fieldProductRow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelCurrency))
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 38, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Setup", panelSetup);
@@ -417,8 +405,6 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
     private javax.swing.JTextField fieldPriceColumn;
     private javax.swing.JTextField fieldProductRow;
     private javax.swing.JTabbedPane jTabbedPane;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel labelCurrency;
     private javax.swing.JLabel labelGenerate;
     private javax.swing.JLabel labelIdColumn;
     private javax.swing.JLabel labelInputFile;

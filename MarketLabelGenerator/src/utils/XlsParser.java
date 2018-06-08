@@ -84,19 +84,23 @@ public class XlsParser {
     }
     
     private Product rowToProduct(Row row) {
-        String productId    = row.getCell(idIdx).toString();
-        String productName  = row.getCell(nameIdx).toString();
-        String productPrice = row.getCell(priceIdx).toString();
-        
-        if (productId.matches(validRowProductIdRegex)
-            && !productId.isEmpty()
-            && !productName.isEmpty()
-            && !productPrice.isEmpty())
-        {
-            return new Product(productId, productName, productPrice);
+        try {
+            String productId    = row.getCell(idIdx).toString();
+            String productName  = row.getCell(nameIdx).toString();
+            String productPrice = row.getCell(priceIdx).toString();
+
+            if (productId.matches(validRowProductIdRegex)
+                && !productId.isEmpty()
+                && !productName.isEmpty()
+                && !productPrice.isEmpty())
+            {
+                return new Product(productId, productName, productPrice);
+            }
+            return null;
+        } catch (Exception e) {        
+            System.err.println("Error parsing row: " + row);
+            return null;
         }
-        
-        return null;
     }
     
     private List<Product> parseSheet(Sheet sheet) throws Exception {

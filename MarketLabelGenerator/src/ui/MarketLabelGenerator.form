@@ -275,7 +275,6 @@
                           <Component id="labelPriceColumn" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="labelProductRow" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="labelIdColumn" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelCurrency" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -283,7 +282,6 @@
                           <Component id="fieldProductRow" pref="300" max="32767" attributes="0"/>
                           <Component id="fieldPriceColumn" max="32767" attributes="0"/>
                           <Component id="fieldNameColumn" max="32767" attributes="0"/>
-                          <Component id="jTextField1" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="14" max="32767" attributes="0"/>
                   </Group>
@@ -312,12 +310,7 @@
                           <Component id="labelProductRow" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="fieldProductRow" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelCurrency" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="38" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -368,16 +361,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldProductRowActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="labelCurrency">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Currency"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="$"/>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>

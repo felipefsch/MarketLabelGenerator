@@ -5,8 +5,12 @@
  */
 package ui;
 
+import java.util.List;
 import java.util.prefs.Preferences;
 import utils.FileHandler;
+import utils.LabelsGenerator;
+import utils.Product;
+import utils.XlsParser;
 
 /**
  *
@@ -47,6 +51,7 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
         labelModelFile = new javax.swing.JLabel();
         fieldModelFilePath = new javax.swing.JTextField();
         buttonSelectModelFile = new javax.swing.JButton();
+        labelErrorMessages = new javax.swing.JLabel();
         panelSetup = new javax.swing.JPanel();
         labelIdColumn = new javax.swing.JLabel();
         labelNameColumn = new javax.swing.JLabel();
@@ -132,6 +137,9 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
             }
         });
 
+        labelErrorMessages.setText("Status Messages");
+        labelErrorMessages.setEnabled(false);
+
         javax.swing.GroupLayout panelCreateLabelsLayout = new javax.swing.GroupLayout(panelCreateLabels);
         panelCreateLabels.setLayout(panelCreateLabelsLayout);
         panelCreateLabelsLayout.setHorizontalGroup(
@@ -164,7 +172,10 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(fieldOutputFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonSelectOutputFile)))
+                        .addComponent(buttonSelectOutputFile))
+                    .addGroup(panelCreateLabelsLayout.createSequentialGroup()
+                        .addComponent(labelErrorMessages)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelCreateLabelsLayout.setVerticalGroup(
@@ -191,6 +202,8 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
                     .addComponent(radioEverything)
                     .addComponent(buttonCreateLabels)
                     .addComponent(labelGenerate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelErrorMessages)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -260,7 +273,7 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
                 .addGroup(panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelProductRow)
                     .addComponent(fieldProductRow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 26, Short.MAX_VALUE))
+                .addGap(0, 51, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Setup", panelSetup);
@@ -280,7 +293,7 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jTabbedPane)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(labelMarketLabelGenerator)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -341,7 +354,38 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
     }//GEN-LAST:event_comboBoxLanguageSelectorActionPerformed
 
     private void buttonCreateLabelsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateLabelsActionPerformed
-        // TODO add your handling code here:
+        labelErrorMessages.setText("Status Messages");
+        
+        String id = fieldIdColumn.getText();
+        String name = fieldNameColumn.getText();
+        String price = fieldPriceColumn.getText();
+        String inputFilePath = fieldInputFilePath.getText();
+        String modelFilePath = fieldModelFilePath.getText();
+        String outputFilePath = fieldOutputFilePath.getText();
+        
+        if (id.isEmpty()
+            || name.isEmpty()
+            || price.isEmpty()
+            || inputFilePath.isEmpty())
+        {
+            labelErrorMessages.setText("Input parameters error");
+            return;
+        }
+        try {
+            XlsParser parser = new XlsParser(id, name, price, inputFilePath);
+            List<Product> products = parser.parse();
+
+            LabelsGenerator generator = new LabelsGenerator(
+                    modelFilePath,
+                    outputFilePath,
+                    products
+            );
+            
+            generator.generate();
+            
+        } catch (Exception e) {
+            System.err.println("Error while creating labels: " + e);
+        }
     }//GEN-LAST:event_buttonCreateLabelsActionPerformed
 
     private void buttonSelectModelFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSelectModelFileActionPerformed
@@ -404,6 +448,7 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
     private javax.swing.JTextField fieldPriceColumn;
     private javax.swing.JTextField fieldProductRow;
     private javax.swing.JTabbedPane jTabbedPane;
+    private javax.swing.JLabel labelErrorMessages;
     private javax.swing.JLabel labelGenerate;
     private javax.swing.JLabel labelIdColumn;
     private javax.swing.JLabel labelInputFile;

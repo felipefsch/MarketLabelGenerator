@@ -30,6 +30,8 @@ public class Product {
     }
 
     public final void setPrice(String price) {
+        // Change comma to dots to support any currency format
+        price = price.replace(',', '.');
         BigDecimal tmpPrice = new BigDecimal(price);        
         NumberFormat nf = NumberFormat.getCurrencyInstance();
         this.price = nf.format(tmpPrice);

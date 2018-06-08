@@ -7,7 +7,7 @@ import org.apache.poi.ss.usermodel.*;
 
 /**
  * This class parses the XLS table containing the list of products and their
- * prices.
+ * prices, generating a valid list of products.
  * 
  * @author felipe-schmidt
  */
@@ -70,7 +70,8 @@ public class XlsParser {
      */
     private void findRowIndexes(Row row) {        
         for(Cell cell : row) {
-            String cellStr = cell.getStringCellValue().toUpperCase();
+            DataFormatter formatter = new DataFormatter();
+            String cellStr = formatter.formatCellValue(cell).toUpperCase();
             if (cellStr.equals(this.id)) {
                 idIdx = cell.getColumnIndex();
             }
@@ -85,9 +86,11 @@ public class XlsParser {
     
     private Product rowToProduct(Row row) {
         try {
-            String productId    = row.getCell(idIdx).toString();
-            String productName  = row.getCell(nameIdx).toString();
-            String productPrice = row.getCell(priceIdx).toString();
+            DataFormatter formatter = new DataFormatter();
+            
+            String productId    = formatter.formatCellValue(row.getCell(idIdx));
+            String productName  = formatter.formatCellValue(row.getCell(nameIdx));
+            String productPrice = formatter.formatCellValue(row.getCell(priceIdx));
 
             if (productId.matches(validRowProductIdRegex)
                 && !productId.isEmpty()

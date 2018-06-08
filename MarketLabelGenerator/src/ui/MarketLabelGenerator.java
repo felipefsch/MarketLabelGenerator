@@ -43,7 +43,7 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
         radioEverything = new javax.swing.JRadioButton();
         radioUpdates = new javax.swing.JRadioButton();
         labelGenerate = new javax.swing.JLabel();
-        panelLoadModel = new javax.swing.JPanel();
+        buttonCreateLabels = new javax.swing.JButton();
         labelModelFile = new javax.swing.JLabel();
         fieldModelFilePath = new javax.swing.JTextField();
         buttonSelectModelFile = new javax.swing.JButton();
@@ -109,56 +109,12 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
 
         labelGenerate.setText("Generate");
 
-        javax.swing.GroupLayout panelCreateLabelsLayout = new javax.swing.GroupLayout(panelCreateLabels);
-        panelCreateLabels.setLayout(panelCreateLabelsLayout);
-        panelCreateLabelsLayout.setHorizontalGroup(
-            panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCreateLabelsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCreateLabelsLayout.createSequentialGroup()
-                        .addComponent(labelInputFile)
-                        .addGap(18, 18, 18)
-                        .addComponent(fieldInputFilePath)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonSelectInputFile))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCreateLabelsLayout.createSequentialGroup()
-                        .addGroup(panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelOutputFile)
-                            .addComponent(labelGenerate))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelCreateLabelsLayout.createSequentialGroup()
-                                .addComponent(radioUpdates)
-                                .addGap(18, 18, 18)
-                                .addComponent(radioEverything))
-                            .addComponent(fieldOutputFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonSelectOutputFile)))
-                .addContainerGap())
-        );
-        panelCreateLabelsLayout.setVerticalGroup(
-            panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCreateLabelsLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelInputFile)
-                    .addComponent(fieldInputFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonSelectInputFile))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelOutputFile)
-                    .addComponent(fieldOutputFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonSelectOutputFile))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioEverything)
-                    .addComponent(radioUpdates)
-                    .addComponent(labelGenerate))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jTabbedPane.addTab("Create Labels", panelCreateLabels);
+        buttonCreateLabels.setText("Create");
+        buttonCreateLabels.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCreateLabelsActionPerformed(evt);
+            }
+        });
 
         labelModelFile.setText("Model File");
 
@@ -176,31 +132,69 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelLoadModelLayout = new javax.swing.GroupLayout(panelLoadModel);
-        panelLoadModel.setLayout(panelLoadModelLayout);
-        panelLoadModelLayout.setHorizontalGroup(
-            panelLoadModelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLoadModelLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelCreateLabelsLayout = new javax.swing.GroupLayout(panelCreateLabels);
+        panelCreateLabels.setLayout(panelCreateLabelsLayout);
+        panelCreateLabelsLayout.setHorizontalGroup(
+            panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCreateLabelsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelModelFile)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(fieldModelFilePath, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonSelectModelFile)
+                .addGroup(panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCreateLabelsLayout.createSequentialGroup()
+                        .addComponent(labelGenerate)
+                        .addGap(18, 18, 18)
+                        .addComponent(radioUpdates)
+                        .addGap(18, 18, 18)
+                        .addComponent(radioEverything)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonCreateLabels, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCreateLabelsLayout.createSequentialGroup()
+                        .addComponent(labelInputFile)
+                        .addGap(18, 18, 18)
+                        .addComponent(fieldInputFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonSelectInputFile))
+                    .addGroup(panelCreateLabelsLayout.createSequentialGroup()
+                        .addComponent(labelModelFile)
+                        .addGap(16, 16, 16)
+                        .addComponent(fieldModelFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonSelectModelFile))
+                    .addGroup(panelCreateLabelsLayout.createSequentialGroup()
+                        .addComponent(labelOutputFile)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(fieldOutputFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonSelectOutputFile)))
                 .addContainerGap())
         );
-        panelLoadModelLayout.setVerticalGroup(
-            panelLoadModelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLoadModelLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(panelLoadModelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        panelCreateLabelsLayout.setVerticalGroup(
+            panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCreateLabelsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelModelFile)
                     .addComponent(fieldModelFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonSelectModelFile))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelInputFile)
+                    .addComponent(fieldInputFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonSelectInputFile))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fieldOutputFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelOutputFile)
+                    .addComponent(buttonSelectOutputFile))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelCreateLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioUpdates)
+                    .addComponent(radioEverything)
+                    .addComponent(buttonCreateLabels)
+                    .addComponent(labelGenerate))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane.addTab("Load Model", panelLoadModel);
+        jTabbedPane.addTab("Create Labels", panelCreateLabels);
 
         labelIdColumn.setText("ID Column");
 
@@ -245,7 +239,7 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
                     .addComponent(fieldProductRow, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                     .addComponent(fieldPriceColumn)
                     .addComponent(fieldNameColumn))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelSetupLayout.setVerticalGroup(
             panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,7 +260,7 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
                 .addGroup(panelSetupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelProductRow)
                     .addComponent(fieldProductRow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 38, Short.MAX_VALUE))
+                .addGap(0, 26, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Setup", panelSetup);
@@ -286,7 +280,7 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane)
+            .addComponent(jTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(labelMarketLabelGenerator)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -331,16 +325,12 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldProductRowActionPerformed
 
     private void buttonSelectInputFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSelectInputFileActionPerformed
-        fieldInputFilePath.setText(FileHandler.displayFileSelector());
+        fieldInputFilePath.setText(FileHandler.displayFileSelectorXls());
     }//GEN-LAST:event_buttonSelectInputFileActionPerformed
 
     private void buttonSelectOutputFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSelectOutputFileActionPerformed
-        fieldOutputFilePath.setText(FileHandler.displayFileSelector());
+        fieldOutputFilePath.setText(FileHandler.displayFileSelectorDoc());
     }//GEN-LAST:event_buttonSelectOutputFileActionPerformed
-
-    private void buttonSelectModelFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSelectModelFileActionPerformed
-        fieldModelFilePath.setText(FileHandler.displayFileSelector());
-    }//GEN-LAST:event_buttonSelectModelFileActionPerformed
 
     private void radioUpdatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioUpdatesActionPerformed
         // TODO add your handling code here:
@@ -349,6 +339,14 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
     private void comboBoxLanguageSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxLanguageSelectorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxLanguageSelectorActionPerformed
+
+    private void buttonCreateLabelsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateLabelsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCreateLabelsActionPerformed
+
+    private void buttonSelectModelFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSelectModelFileActionPerformed
+        fieldModelFilePath.setText(FileHandler.displayFileSelectorDoc());
+    }//GEN-LAST:event_buttonSelectModelFileActionPerformed
 
     private void loadUserPreferences() {
         //Preferences prefs = Preferences.userNodeForPackage(this);
@@ -392,6 +390,7 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonCreateLabels;
     private javax.swing.ButtonGroup buttonLabelCreation;
     private javax.swing.JButton buttonSelectInputFile;
     private javax.swing.JButton buttonSelectModelFile;
@@ -416,7 +415,6 @@ public class MarketLabelGenerator extends javax.swing.JFrame {
     private javax.swing.JLabel labelPriceColumn;
     private javax.swing.JLabel labelProductRow;
     private javax.swing.JPanel panelCreateLabels;
-    private javax.swing.JPanel panelLoadModel;
     private javax.swing.JPanel panelSetup;
     private javax.swing.JRadioButton radioEverything;
     private javax.swing.JRadioButton radioUpdates;
